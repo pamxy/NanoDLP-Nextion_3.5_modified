@@ -1,5 +1,9 @@
-# NanoDLP-TouchScreen
+# NanoDLP-TouchScreen - MODIFIED
 Nextion Screen => NodeJS => NanoDLP
+
+![modified.jpg](modified.jpg)
+![addplates.jpg](addplates.jpg)
+
 ![photo.jpg](photo.jpg)
 
 ## Require 
