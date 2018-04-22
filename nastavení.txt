@@ -1,0 +1,34 @@
+START:
+;********** Header Start111 ********
+;Here you can set any G or M-Code which should be executed BEFORE the build process
+G21 ;Set units to be mm
+
+G91 ;Relative Positioning
+M17 ;Enable motors
+
+M106 S255
+;********** Header End **********
+
+Pre_slice:
+;********** Pre-Slice Start 333********
+;Set up any GCode here to be executed before a lift
+;********** Pre-Slice End **********
+
+Lift:
+;********** Lift Sequence444 ********
+M106 S0
+G1 Z($ZLiftDist * $ZDir) F{$CURSLICE < $ZNumLiftFirstLayers?$ZLiftBtmRate:$ZLiftRate}
+G1 Z(($LayerThickness-$ZLiftDist) * $ZDir) F$ZRetractRate
+;<Delay> %d$BlankTime
+M106 S255
+
+;********** Lift Sequence 555**********
+
+End:
+;********** Footer Start222 ********
+;Here you can set any G or M-Code which should be executed after the last Layer is Printed!!!!
+M106 S0
+G1 Z30.0 F150.0
+G04 P30000
+M18 ;Disable Motors
+;********** Footer End ********
